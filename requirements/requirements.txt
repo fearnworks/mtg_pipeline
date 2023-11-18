@@ -1,0 +1,15 @@
+opencv-python
+pytesseract
+matplotlib
+gradio
+python-dotenv
+transformers
+torch
+bitsandbytes
+loguru
+torch 
+torchvision
+httpx
+scrython
+openpyxl
+git+https://github.com/facebookresearch/segment-anything.git
