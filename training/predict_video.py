@@ -2,11 +2,15 @@ import os
 import cv2
 from ultralytics import YOLO
 
-def predict_video(video_path, model_path, threshold=0.5):
-    video_path_out = f'{video_path}_out.mp4'
+def predict_video(video_path, model_path, output_path, threshold=0.2, rotate=False):
+    video_path_out = f'{output_path}.mp4'
 
     cap = cv2.VideoCapture(video_path)
     ret, frame = cap.read()
+    
+    if rotate:
+        frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+    
     H, W, _ = frame.shape
     out = cv2.VideoWriter(video_path_out, cv2.VideoWriter_fourcc(*'MP4V'), int(cap.get(cv2.CAP_PROP_FPS)), (W, H))
 
@@ -14,6 +18,9 @@ def predict_video(video_path, model_path, threshold=0.5):
     model = YOLO(model_path)
 
     while ret:
+        if rotate:
+            frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+        
         results = model(frame)[0]
 
         for result in results.boxes.data.tolist():

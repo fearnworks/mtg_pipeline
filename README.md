@@ -95,18 +95,32 @@ The digital archive will be comprehensive and formatted for ease of use in subse
 - `image_status`: The image status of the card.
 - `finishes`: The finishes of the card.
 
-## Training 
-The training process is a critical component of our application for identifying and archiving Magic: The Gathering (MTG) cards from videos. This process involves using machine learning techniques to train a model capable of detecting and extracting key information from MTG cards displayed in video frames.
+# MTG Card Detector Training Utility Guide
 
-### Key Steps in the Training Process
+The `training_util.py` script facilitates various stages of the ML lifecycle for Magic: The Gathering (MTG) card detection. Below is a guide on how to use this utility.
 
-- Data Preparation: Frames extracted from videos serve as our primary dataset. These frames are annotated to identify regions containing crucial card information.
-- Model Selection: We employ advanced object detection models, with a focus on the YOLO (You Only Look Once) architecture, particularly its latest versions for optimal performance.
-- Model Training: The model is trained on the prepared dataset, learning to identify and extract card details like the collector number and set code from the video frames.
-- Hyperparameter Tuning: We fine-tune various hyperparameters such as learning rate, batch size, and epochs to improve the model's accuracy and efficiency.
-- Model Evaluation: Post-training, the model is evaluated on a validation dataset to assess its accuracy and ability to generalize to new data.
-- Iteration and Improvement: Based on evaluation results, the model undergoes further tuning and retraining to enhance its performance.
-- Integration: Once trained and validated, the model is integrated into the application, enabling it to process video inputs and extract card information.
+## Commands
 
-### Documentation and Further Reading
-For a detailed walkthrough of each step in the training process, including technical specifics, setup instructions, and best practices, please refer to our comprehensive guide: [stub]
+### Training a Model
+
+To train a model, you need to specify the model configuration file, the data configuration file, and the number of epochs.
+
+```bash
+python training_util.py train --config yolov8n.yaml --data ./training/config.yaml --epochs 10
+```
+
+### Predicting Using a Trained Model
+
+To predict using a trained model, you need to provide the path to the video file, the trained model file, and the output directory to save the processed video.
+
+```bash
+python training_util.py predict -v /path/to/video.mp4 --model /path/to/model.pt -o /path/to/output
+```
+
+## Extracting Frames from a Video
+To extract frames from a video for dataset creation, you need the video path and the output directory. You can also specify the number of seconds to skip between frames and whether to rotate the video.
+
+
+```bash
+python training_util.py extract_frames --video_path /path/to/video.mp4 --output_dir /path/to/frames --skip_rate 1 --rotate
+```
