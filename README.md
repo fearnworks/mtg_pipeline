@@ -94,3 +94,19 @@ The digital archive will be comprehensive and formatted for ease of use in subse
 - `preview`: The preview of the card.
 - `image_status`: The image status of the card.
 - `finishes`: The finishes of the card.
+
+## Training 
+The training process is a critical component of our application for identifying and archiving Magic: The Gathering (MTG) cards from videos. This process involves using machine learning techniques to train a model capable of detecting and extracting key information from MTG cards displayed in video frames.
+
+### Key Steps in the Training Process
+
+- Data Preparation: Frames extracted from videos serve as our primary dataset. These frames are annotated to identify regions containing crucial card information.
+- Model Selection: We employ advanced object detection models, with a focus on the YOLO (You Only Look Once) architecture, particularly its latest versions for optimal performance.
+- Model Training: The model is trained on the prepared dataset, learning to identify and extract card details like the collector number and set code from the video frames.
+- Hyperparameter Tuning: We fine-tune various hyperparameters such as learning rate, batch size, and epochs to improve the model's accuracy and efficiency.
+- Model Evaluation: Post-training, the model is evaluated on a validation dataset to assess its accuracy and ability to generalize to new data.
+- Iteration and Improvement: Based on evaluation results, the model undergoes further tuning and retraining to enhance its performance.
+- Integration: Once trained and validated, the model is integrated into the application, enabling it to process video inputs and extract card information.
+
+### Documentation and Further Reading
+For a detailed walkthrough of each step in the training process, including technical specifics, setup instructions, and best practices, please refer to our comprehensive guide: [stub]
