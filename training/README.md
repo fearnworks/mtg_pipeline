@@ -50,7 +50,7 @@ names: ['MTG_Card']
 Run the training script. You can adjust hyperparameters like epochs, batch size, etc., as needed.
 
 ```bash
-python train.py --img 640 --batch 16 --epochs 100 --data config.yaml --weights yolov8n.pt
+python training_util.py train --config=yolov8n.yaml --data=./training/config.yaml --epochs=1
 ```
 
 ## Step 6: Evaluation
